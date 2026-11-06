@@ -28,7 +28,7 @@ const HomePage = () => {
   return (
     <iframe
       title="ParaQuemDoar"
-      src="/aacd.html"
+      src="/aacd.html?v=20260606a"
       data-testid="home-aacd-frame"
       style={{ border: 'none', width: '100%', height: '100vh', display: 'block' }}
     />

@@ -74,3 +74,8 @@ Clone do site https://www.paraquemdoar.com.br/ - plataforma de doações com pai
 - Donation cards: reduced `.vtex-button__label` padding 25->16px, removed min-height:240px, price 24->20px, smaller strong/small/span, radio circle 30->22px.
 - Stats "veja o que sua boa ação movimenta": title 19px centered; `.flexRow--pitbar` numbers 22px centered, icons max-width 56px centered.
 - All inside existing `#aacd-mobile-fix` @media(max-width:1024px) in frontend/public/aacd.html. Verified at 390px: portal hidden, price 20px, stat 22px centered, body scrollWidth=390.
+
+## [2026-06] Cache-busting for aacd.html iframe
+- User kept seeing old mobile layout: browser cached the iframe's /aacd.html.
+- Fix: App.js HomePage iframe src -> /aacd.html?v=20260606a (bump version on future aacd.html edits).
+- Verified on "/" route at 390px: iframe loads ?v=..., portal link display:none, card price 20px.
