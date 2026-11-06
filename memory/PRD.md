@@ -62,3 +62,9 @@ Clone do site https://www.paraquemdoar.com.br/ - plataforma de doações com pai
 ## Backlog
 - Nenhuma tarefa bloqueante identificada para deploy
 - Enhancement sugerido: Página pública de relatório/transparência mostrando total arrecadado e número de doadores em tempo real — aumenta confiança e estimula mais doações
+
+## [2026-06] Mobile homepage layout fix (Android/iOS)
+- Problem: homepage (`frontend/public/aacd.html`, a SingleFile VTEX snapshot rendered in a 100vh iframe) looked broken on mobile.
+- Root causes found at 390px: (1) footer/post flex columns kept desktop side-by-side layout → horizontal overflow (body scrollWidth 742px); (2) fixed confirm button `position:fixed;width:45%` → "CONFIRMAR DOAÇÃO" wrapped/cramped.
+- Fix: appended scoped `<style id="aacd-mobile-fix">` inside `@media (max-width:1024px)` right after `<body>`: overflow-x hidden, stacked footer/post/copyright columns, donation cards full-width with spacing, clean bottom bar (toggle on top + full-width confirm button), body padding-bottom for the fixed bar. Desktop (>=1025px) untouched.
+- Verified via 390px screenshot: body scrollWidth = 390 (no horizontal scroll), bottom bar and cards render cleanly.
