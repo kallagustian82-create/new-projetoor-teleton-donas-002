@@ -68,3 +68,9 @@ Clone do site https://www.paraquemdoar.com.br/ - plataforma de doações com pai
 - Root causes found at 390px: (1) footer/post flex columns kept desktop side-by-side layout → horizontal overflow (body scrollWidth 742px); (2) fixed confirm button `position:fixed;width:45%` → "CONFIRMAR DOAÇÃO" wrapped/cramped.
 - Fix: appended scoped `<style id="aacd-mobile-fix">` inside `@media (max-width:1024px)` right after `<body>`: overflow-x hidden, stacked footer/post/copyright columns, donation cards full-width with spacing, clean bottom bar (toggle on top + full-width confirm button), body padding-bottom for the fixed bar. Desktop (>=1025px) untouched.
 - Verified via 390px screenshot: body scrollWidth = 390 (no horizontal scroll), bottom bar and cards render cleanly.
+
+## [2026-06] Mobile homepage refinements (round 2)
+- Header: hid person icon + "Portal do Doador" link on mobile via `.vtex-rich-text-0-x-container--txtlogin{display:none}` (icon is the link's :before).
+- Donation cards: reduced `.vtex-button__label` padding 25->16px, removed min-height:240px, price 24->20px, smaller strong/small/span, radio circle 30->22px.
+- Stats "veja o que sua boa ação movimenta": title 19px centered; `.flexRow--pitbar` numbers 22px centered, icons max-width 56px centered.
+- All inside existing `#aacd-mobile-fix` @media(max-width:1024px) in frontend/public/aacd.html. Verified at 390px: portal hidden, price 20px, stat 22px centered, body scrollWidth=390.
