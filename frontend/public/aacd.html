@@ -268,15 +268,17 @@ window.__aacdWired = false;
   .aacd-tab-layout-0-x-listItem,
   .aacd-tab-layout-0-x-listItemChildren{width:100% !important;max-width:100% !important;flex-basis:auto !important;margin:0 !important;}
 
-  /* ---- Fixed bottom bar: toggle on top, full-width button below ---- */
+  /* ---- Bottom donation bar: NOT fixed, flows after the cards ---- */
+  body{padding-bottom:0 !important;}
   .aacd-tab-layout-0-x-container--donation .donation_action{
-    left:0 !important;right:0 !important;width:100% !important;
-    padding:12px 14px 72px 14px !important;justify-content:center !important;}
+    position:static !important;left:auto !important;right:auto !important;bottom:auto !important;
+    width:100% !important;padding:16px 14px 6px 14px !important;box-shadow:none !important;background:transparent !important;justify-content:center !important;}
   .aacd-tab-layout-0-x-container--donation .donation_action .doacao_mensal{
     margin:0 !important;justify-content:center !important;align-items:center !important;width:100% !important;}
   .aacd-tab-layout-0-x-container--donation .donation_action .doacao_mensal p{max-width:none !important;font-size:14px !important;letter-spacing:normal !important;}
   .aacd-tab-layout-0-x-container--donation .aacd-tab-layout-0-x-contentContainer{
-    width:auto !important;left:14px !important;right:14px !important;bottom:12px !important;}
+    position:static !important;left:auto !important;right:auto !important;bottom:auto !important;
+    width:100% !important;padding:0 14px 24px 14px !important;box-sizing:border-box !important;}
   .aacd-tab-layout-0-x-container--donation .aacd-tab-layout-0-x-contentContainer .vtex-button__label{
     white-space:nowrap !important;}
 

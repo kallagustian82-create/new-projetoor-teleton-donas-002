@@ -79,3 +79,8 @@ Clone do site https://www.paraquemdoar.com.br/ - plataforma de doações com pai
 - User kept seeing old mobile layout: browser cached the iframe's /aacd.html.
 - Fix: App.js HomePage iframe src -> /aacd.html?v=20260606a (bump version on future aacd.html edits).
 - Verified on "/" route at 390px: iframe loads ?v=..., portal link display:none, card price 20px.
+
+## [2026-06] Remove fixed bottom donation bar (mobile)
+- User asked to remove the fixed bottom bar (toggle "Desejo doar mensalmente" + "Confirmar doação").
+- Fix: on mobile set .donation_action and .aacd-tab-layout-0-x-contentContainer to position:static (flow inline after cards, full-width button), body padding-bottom:0. Bumped iframe cache version to ?v=20260606b.
+- Verified on "/" at 390px: da_pos=static, cc_pos=static.
