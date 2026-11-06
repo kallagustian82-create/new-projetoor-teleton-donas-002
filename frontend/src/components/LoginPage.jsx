@@ -34,10 +34,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div data-testid="admin-login-page" className="min-h-screen bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 flex items-center justify-center p-4">
+    <div data-testid="admin-login-page" className="min-h-screen bg-gradient-to-br from-[#eb1941] via-[#c21338] to-[#7a0c22] flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">Painel Administrativo</h1>
-        <p className="text-gray-600 text-center mb-8">ParaQuemDoar</p>
+        <div className="flex flex-col items-center mb-8">
+          <img src="/aacd-favicon.png" alt="Teleton AACD" className="h-16 w-16 mb-3" data-testid="login-logo" />
+          <h1 className="text-2xl font-bold text-gray-800 text-center">Painel Administrativo</h1>
+          <p className="text-[#eb1941] font-bold text-center mt-1 tracking-wide">Teleton AACD</p>
+        </div>
 
         <form onSubmit={handleLogin} className="space-y-6" data-testid="login-form">
           <div>
@@ -49,7 +52,7 @@ const LoginPage = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-pink-500 focus:outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-[#eb1941] focus:outline-none transition-colors"
               placeholder="Digite seu usuario"
               required
             />
@@ -64,7 +67,7 @@ const LoginPage = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-pink-500 focus:outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-[#eb1941] focus:outline-none transition-colors"
               placeholder="Digite sua senha"
               required
             />
@@ -80,7 +83,7 @@ const LoginPage = () => {
             data-testid="login-submit-button"
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600 hover:to-purple-600 rounded-lg py-3 font-semibold transition-all duration-300 hover:scale-105"
+            className="w-full bg-[#eb1941] text-white hover:bg-[#c21338] rounded-lg py-3 font-semibold transition-all duration-300 hover:scale-105"
           >
             {loading ? 'Entrando...' : 'Entrar'}
           </Button>

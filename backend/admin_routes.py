@@ -228,7 +228,7 @@ async def test_telegram(user=Depends(verify_token)):
     chat_id = await get_chat_id()
     if not chat_id:
         raise HTTPException(status_code=400, detail="Chat ID nao configurado")
-    await send_message("✅ <b>Teste de conexão</b>\n\nBot ParaQuemDoar conectado com sucesso!")
+    await send_message("✅ <b>Teste de conexão</b>\n\nBot Teleton AACD conectado com sucesso!")
     return {"message": "Mensagem de teste enviada"}
 
 
@@ -266,7 +266,7 @@ async def generate_pix(value: float = Query(..., gt=0)):
     payload = generate_pix_payload(
         pix_key=pix_key,
         amount=value,
-        merchant_name=values.get("beneficiary_name") or "ParaQuemDoar",
+        merchant_name=values.get("beneficiary_name") or "AACD",
         merchant_city=(values.get("city") or "SAO PAULO").upper(),
     )
     return {"pix_code": payload, "pix_key": pix_key}

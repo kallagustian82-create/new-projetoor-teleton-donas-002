@@ -110,7 +110,7 @@ def _build_message(value, donor_name, status_emoji, status_text, device="", loca
     location_text = location if location else "-"
     origin_text = origin if origin else "-"
     return (
-        f"\U0001F7E2 <b>NOVO PIX GERADO! (Para Quem Doar)</b>\n"
+        f"\U0001F7E2 <b>NOVO PIX GERADO! (Teleton AACD)</b>\n"
         f"━━━━━━━━━━━━━━━━━\n"
         f"\U0001F464 Usuário: {nome}\n"
         f"\U0001F4B0 Valor: <b>R$ {value:,.2f}</b>\n"

@@ -283,8 +283,11 @@ const AdminDashboard = () => {
         <div className="container mx-auto px-4 md:px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/54mac6cp_logo-horizontal%20%281%29.png" alt="ParaQuemDoar" className="h-8 hidden md:block" />
-              <h1 className="text-xl md:text-2xl font-bold text-gray-800">Painel Administrativo</h1>
+              <img src="/aacd-favicon.png" alt="Teleton AACD" className="h-9 w-9" />
+              <div className="flex flex-col leading-tight">
+                <h1 className="text-lg md:text-2xl font-bold text-gray-800">Painel Administrativo</h1>
+                <span className="text-xs md:text-sm font-bold text-[#eb1941] tracking-wide">Teleton AACD</span>
+              </div>
             </div>
             <div className="flex items-center gap-3">
               {lastUpdate && (
@@ -532,7 +535,7 @@ const AdminDashboard = () => {
                       value={beneficiaryName}
                       onChange={(e) => setBeneficiaryName(e.target.value)}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-100 focus:outline-none transition-colors text-sm"
-                      placeholder="ex: Campanha RS"
+                      placeholder="ex: AACD"
                       maxLength={25}
                     />
                   </div>

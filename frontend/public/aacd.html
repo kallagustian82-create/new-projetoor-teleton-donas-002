@@ -71,6 +71,26 @@ window.__aacdWired = false;
     if(cv){cv.value='';}
   }
 
+  function doConfirm(){
+    if (sel < MIN) {
+      var cv = document.getElementById('myvalue');
+      if(cv){ try{ cv.focus(); }catch(_){} }
+      setOutroState(true);
+      try { window.alert('O valor m\u00ednimo de doa\u00e7\u00e3o \u00e9 R$ '+MIN+',00. Escolha um dos valores sugeridos ou digite um valor maior ou igual a R$ '+MIN+',00.'); } catch(_){}
+      return;
+    }
+    var ovl = document.getElementById('aacd-loading');
+    if(ovl){ ovl.classList.add('on'); }
+    setTimeout(function(){
+      window.parent.postMessage({ type: 'aacd-donate', value: sel }, '*');
+    }, 1000);
+  }
+  // Allow the parent app's fixed mobile button to trigger confirm
+  window.addEventListener('message', function(e){
+    var d = e.data || {};
+    if (d && d.type === 'aacd-confirm-request') { doConfirm(); }
+  });
+
   // ---- Clicks (value cards, confirm, external links) ----
   document.addEventListener('click', function(e){
     try {
@@ -84,18 +104,7 @@ window.__aacdWired = false;
         var t = (b.textContent || '').trim();
         if (/CONFIRMAR\s+DOA/i.test(t)) {
           e.preventDefault(); e.stopImmediatePropagation();
-          if (sel < MIN) {
-            var cv = document.getElementById('myvalue');
-            if(cv){ try{ cv.focus(); }catch(_){} }
-            setOutroState(true);
-            try { window.alert('O valor m\u00ednimo de doa\u00e7\u00e3o \u00e9 R$ '+MIN+',00. Escolha um dos valores sugeridos ou digite um valor maior ou igual a R$ '+MIN+',00.'); } catch(_){}
-            return;
-          }
-          var ovl = document.getElementById('aacd-loading');
-          if(ovl){ ovl.classList.add('on'); }
-          setTimeout(function(){
-            window.parent.postMessage({ type: 'aacd-donate', value: sel }, '*');
-          }, 1000);
+          doConfirm();
           return;
         }
         var li = b.closest ? b.closest('.aacd-tab-layout-0-x-listItem') : null;
@@ -268,19 +277,10 @@ window.__aacdWired = false;
   .aacd-tab-layout-0-x-listItem,
   .aacd-tab-layout-0-x-listItemChildren{width:100% !important;max-width:100% !important;flex-basis:auto !important;margin:0 !important;}
 
-  /* ---- Bottom donation bar: NOT fixed, flows after the cards ---- */
-  body{padding-bottom:0 !important;}
-  .aacd-tab-layout-0-x-container--donation .donation_action{
-    position:static !important;left:auto !important;right:auto !important;bottom:auto !important;
-    width:100% !important;padding:16px 14px 6px 14px !important;box-shadow:none !important;background:transparent !important;justify-content:center !important;}
-  .aacd-tab-layout-0-x-container--donation .donation_action .doacao_mensal{
-    margin:0 !important;justify-content:center !important;align-items:center !important;width:100% !important;}
-  .aacd-tab-layout-0-x-container--donation .donation_action .doacao_mensal p{max-width:none !important;font-size:14px !important;letter-spacing:normal !important;}
-  .aacd-tab-layout-0-x-container--donation .aacd-tab-layout-0-x-contentContainer{
-    position:static !important;left:auto !important;right:auto !important;bottom:auto !important;
-    width:100% !important;padding:0 14px 24px 14px !important;box-sizing:border-box !important;}
-  .aacd-tab-layout-0-x-container--donation .aacd-tab-layout-0-x-contentContainer .vtex-button__label{
-    white-space:nowrap !important;}
+  /* ---- Remove monthly toggle; hide in-iframe confirm (replaced by fixed parent button) ---- */
+  body{padding-bottom:84px !important;}
+  .aacd-tab-layout-0-x-container--donation .donation_action{display:none !important;}
+  .aacd-tab-layout-0-x-container--donation .aacd-tab-layout-0-x-contentContainer{display:none !important;}
 
   /* ---- Footer / post / copyright rows: stack and center (fixes 742px overflow) ---- */
   .vtex-flex-layout-0-x-flexRowContent--footer-nav,

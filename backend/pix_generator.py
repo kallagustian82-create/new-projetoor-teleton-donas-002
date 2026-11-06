@@ -27,7 +27,7 @@ def _crc16(payload: str) -> str:
 def generate_pix_payload(
     pix_key: str,
     amount: float,
-    merchant_name: str = "ParaQuemDoar",
+    merchant_name: str = "AACD",
     merchant_city: str = "SAO PAULO",
     description: str = "***",
 ) -> str:
